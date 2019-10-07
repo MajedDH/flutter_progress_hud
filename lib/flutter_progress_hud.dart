@@ -14,6 +14,7 @@ class ProgressHUD extends StatefulWidget {
   final Color barrierColor;
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
+  final bool barrierDismissable;
 
   ProgressHUD(
       {@required this.child,
@@ -25,6 +26,7 @@ class ProgressHUD extends StatefulWidget {
       this.borderWidth = 0.0,
       this.barrierEnabled = true,
       this.barrierColor = Colors.black12,
+      this.barrierDismissable = true,
       this.textStyle = const TextStyle(color: Colors.white, fontSize: 14.0),
       this.padding = const EdgeInsets.all(16.0)})
       : assert(child != null);
@@ -106,6 +108,7 @@ class _ProgressHUDState extends State<ProgressHUD>
         Visibility(
           visible: _barrierVisible,
           child: ModalBarrier(
+            dismissible: widget.barrierDismissable,
             color: widget.barrierColor,
           ),
         ),
